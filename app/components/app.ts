@@ -1,39 +1,33 @@
 import {Component} from 'angular2/core';
-import {View} from "angular2/core";
+import {View} from 'angular2/core';
+import {UserService} from '../services/user.service';
+import {User} from '../contracts/user';
+import {OnInit} from 'angular2/core';
 
 @Component({
-    selector: 'app'
+    selector: 'app',
+    providers: [UserService]
 })
 @View({
     templateUrl: '../../app/templates/layout.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-    constructor () {
-        this._firstName = 'Ara';
-        this._lastName = 'Vardanyan';
-        this._age = 34;
-        this._email = 'aravardanyan@gmail.com';
+    private _currentUser: User;
+
+    get currentUser(): User {
+        return this._currentUser;
     }
 
-    private _firstName: string;
-    private _lastName: string;
-    private _age: number;
-    private _email: string;
-
-    get firstName(): string {
-        return this._firstName;
+    constructor (private _userService: UserService) {
+        this._currentUser = {firstName: '', lastName: '', userName: '', email: '', age: 0};
     }
 
-    get lastName(): string {
-        return this._lastName;
+    fetchCurrentUser() {
+        this._userService.getCurrentUser().then((user: User) => this._currentUser = user);
     }
 
-    get age(): number {
-        return this._age;
-    }
-
-    get email(): string {
-        return this._email;
+    ngOnInit() {
+        this.fetchCurrentUser();
     }
 }
