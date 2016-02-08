@@ -15,19 +15,19 @@ export class AppComponent implements OnInit {
 
     private _currentUser: User;
 
-    get currentUser(): User {
+    constructor (private _userService: UserService) {
+        this._currentUser = new User();
+    }
+
+    public get currentUser(): User {
         return this._currentUser;
     }
 
-    constructor (private _userService: UserService) {
-        this._currentUser = {firstName: '', lastName: '', userName: '', email: '', age: 0};
-    }
-
-    fetchCurrentUser() {
-        this._userService.getCurrentUser().then((user: User) => this._currentUser = user);
-    }
-
-    ngOnInit() {
+    public ngOnInit(): void {
         this.fetchCurrentUser();
+    }
+
+    private fetchCurrentUser(): void {
+        this._userService.getCurrentUser().then((user: User) => this._currentUser = user);
     }
 }
