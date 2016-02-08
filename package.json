@@ -1,5 +1,5 @@
 {
-  "name": "angular2-quickstart",
+  "name": "Angular2Hello",
   "version": "1.0.0",
   "scripts": {
     "tsc": "tsc",
@@ -21,6 +21,7 @@
     "concurrently": "^1.0.0",
     "lite-server": "^2.0.1",
     "typescript": "^1.7.5",
+    "systemjs-builder": "^0.15.0",
     "gulp": "^3.9.0",
     "gulp-ext-replace": "^0.2.0",
     "gulp-imagemin": "^2.4.0",
