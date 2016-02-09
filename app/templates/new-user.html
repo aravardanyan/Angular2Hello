@@ -1,0 +1,13 @@
+<ul>
+    <li>
+        <label for="firstName">First Name:</label>
+        <input id="firstName" type="text" #firstName/>
+    </li>
+    <li>
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" type="text" #lastName />
+    </li>
+    <li>
+        <a href="javascript:void(0)" (click)="addUser(firstName.value, lastName.value)">Add</a>
+    </li>
+</ul>

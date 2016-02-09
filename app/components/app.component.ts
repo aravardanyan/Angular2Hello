@@ -1,16 +1,22 @@
 import {Component} from 'angular2/core';
-import {View} from 'angular2/core';
+import {OnInit} from 'angular2/core';
+import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig} from 'angular2/router';
 import {UserService} from '../services/user.service';
 import {User} from '../contracts/user';
-import {OnInit} from 'angular2/core';
+import {UserListComponent} from './user-list.component';
+import {NewUserComponent} from "./new-user.component";
 
 @Component({
     selector: 'app',
-    providers: [UserService]
+    templateUrl: 'app/templates/layout.html',
+    providers: [UserService],
+    directives: [UserListComponent, NewUserComponent, ROUTER_DIRECTIVES]
 })
-@View({
-    templateUrl: '../../app/templates/layout.html'
-})
+@RouteConfig([
+    {path: '/users', name: 'Users', component: UserListComponent, useAsDefault: true},
+    {path: '/newuser', name: 'NewUser', component: NewUserComponent}
+])
 export class AppComponent implements OnInit {
 
     private _currentUser: User;

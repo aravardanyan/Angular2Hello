@@ -1,12 +1,19 @@
 <div class="app">
 
-    <div class="header">Header goes here</div>
+    <header>
+        <nav>
+            <a [routerLink]="['Users']" href="#">Users</a>
+            <a [routerLink]="['NewUser']" href="#">New User</a>
+        </nav>
+    </header>
 
     <div class="content">
         <h1>Hello Angular 2 World.</h1>
 
         <div>
             <span>Logged in as {{currentUser.userName}} - {{currentUser.firstName}} {{currentUser.lastName}}</span>
+
+            <router-outlet></router-outlet>
         </div>
     </div>
 
