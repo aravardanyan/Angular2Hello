@@ -20,6 +20,20 @@ export class UserListComponent implements OnInit {
         return this._userList;
     }
 
+    public getCurrentTime(): void {
+        this._userService.getCurrentTime().subscribe(
+            data => console.log(JSON.stringify(data)),
+            error => console.log(error),
+            () => console.log('Finished.'));
+    }
+
+    public postJson(): void {
+        this._userService.postJson().subscribe(
+            data => console.log(JSON.stringify(data)),
+            error => console.log(error),
+            () => console.log('Finished.'));
+    }
+
     public ngOnInit(): void {
         this.fetchUsers();
     }
