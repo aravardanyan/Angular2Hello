@@ -16,7 +16,7 @@ gulp.task('builder', function(cb) {
         transpiler: 'node_modules/typescript'
     });
 
-    builder.buildStatic('app/main.js', 'app.min.js', { minify: true })
+    builder.buildStatic('app/main.js', 'app/app.min.js', { minify: false })
         .then(function() {
             console.log('Build complete');
             cb();
