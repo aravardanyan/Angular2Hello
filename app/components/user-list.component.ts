@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {OnInit} from 'angular2/core';
 import {UserService} from '../services/user.service';
 import {User} from '../contracts/user';
+import {Json} from "angular2/src/facade/lang";
 
 @Component({
     selector: 'user-list',
@@ -11,6 +12,7 @@ import {User} from '../contracts/user';
 export class UserListComponent implements OnInit {
 
     private _userList: Array<User>;
+    public JsonData: Json = null;
 
     constructor (private _userService: UserService) {
         this._userList = [];
@@ -29,9 +31,8 @@ export class UserListComponent implements OnInit {
 
     public postJson(): void {
         this._userService.postJson().subscribe(
-            data => console.log(JSON.stringify(data)),
-            error => console.log(error),
-            () => console.log('Finished.'));
+            data => this.JsonData = data,
+            error => console.log(error));
     }
 
     public ngOnInit(): void {

@@ -2,9 +2,11 @@
     <li *ngFor="#user of userList"
         (click) = "itemClick(user, $event)"
         style="cursor: pointer;">
-        {{user.firstName}} {{user.lastName}}
+        {{user.firstName}} {{user.lastName | uppercase}}
     </li>
 </ul>
+
+<h2>{{JsonData | json}}</h2>
 
 <button (click)="getCurrentTime()">Get Current Time</button>
 <button (click)="postJson()">Post Json</button>
